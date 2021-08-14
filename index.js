@@ -63,7 +63,7 @@ app.post("/files", jsonParser, function (req, res) {
     const collection = req.app.locals.collection;
 
     let usersMapped = files.map(function(el) {
-        return({fullName: el.fieldname,
+        return({fullName: el.filename,
                 path: el.path,
                 data: new Date().toLocaleString(),
                 size: el.size
