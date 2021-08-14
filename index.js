@@ -1,5 +1,4 @@
 
-
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
 const objectId = require("mongodb").ObjectID;  
@@ -7,24 +6,24 @@ const app = express();
 const jsonParser = express.json();
 const multer = require('multer');
 let fs = require('fs-extra');
+const path = require('path')
 
 const mongoClient = new MongoClient("mongodb://localhost:27017/", { useUnifiedTopology: true , capped : true, size:4000, max : 1 });
 
-let random16 = Math.floor(Math.random()*16777215).toString(16);
-
 const storageConfig = multer.diskStorage({
+
     destination: (req, file, cb) =>{
             let path = "C:\\Users\\user\\Desktop\\test";
             fs.mkdirsSync(path);
             cb(null, path);
     },
     filename: (req, file, cb) =>{
-        cb(null, random16 + ".txt");
+            let random16 = Math.floor(Math.random()*1677721532234532).toString(16)
+            cb(null, Date.now() + '-' + random16 + path.extname(file.originalname));    
     },
-    
 });
 
-app.use(multer({storage:storageConfig, limits:{ files: 1,fileSize: 100000 },}).single("filedata"));
+app.use(multer({storage:storageConfig, limits:{ files: 5,fileSize: 100000 },}).any());
 
 app.use(express.static(__dirname));
 
@@ -36,7 +35,7 @@ mongoClient.connect(function(err, client){
         console.log('Сервер был запушен !')
     });
 });
-app.get("/users", function(req, res){
+app.get("/files", function(req, res){
         
     const collection = req.app.locals.collection;
     collection.find({}).toArray(function(err, users){
@@ -46,7 +45,7 @@ app.get("/users", function(req, res){
     });  
 });
 let dbClient;
-app.get("/users/:id", function(req, res){
+app.get("/files/:id", function(req, res){
         
     const id = new objectId(req.params.id);
     const collection = req.app.locals.collection;
@@ -57,21 +56,28 @@ app.get("/users/:id", function(req, res){
     });
 });
 
-app.post("/users", jsonParser, function (req, res) {
+app.post("/files", jsonParser, function (req, res) {
 
-    const file = req.file
-    console.log(file)
-   
+    const files = req.files
+    console.log(files)
     const collection = req.app.locals.collection;
-    const files = {name: file.fieldname, value:file.path, data:+Date.now()};
-    collection.insertOne(files, function(err, result){
+
+    let usersMapped = files.map(function(el) {
+        return({fullName: el.fieldname,
+                path: el.path,
+                data: new Date().toLocaleString(),
+                size: el.size
+            })
+      });
+     
+    collection.insertMany(usersMapped, function(err, result){
                
         if(err) return console.log(err);
-        if(!file){
+        if(!usersMapped){
         res.send("Ошибка при загрузке файла");
         }
         else
-        res.send(files);     
+        res.send(usersMapped);     
     })
 });
    
@@ -79,5 +85,5 @@ process.on("SIGINT", () => {
     dbClient.close();
     process.exit();
 });
-//--------------------------------------------------------------------
+
  
