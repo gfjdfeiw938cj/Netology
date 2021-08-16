@@ -8,7 +8,7 @@ const multer = require('multer');
 let fs = require('fs-extra');
 const path = require('path')
 
-const mongoClient = new MongoClient("mongodb://localhost:27017/", { useUnifiedTopology: true , capped : true, size:4000, max : 1 });
+const mongoClient = new MongoClient("mongodb://localhost:27017/", { useUnifiedTopology: true , capped: true, size:4000, max : 1 });
 
 const storageConfig = multer.diskStorage({
 
@@ -35,24 +35,24 @@ mongoClient.connect(function(err, client){
         console.log('Сервер был запушен !')
     });
 });
-app.get("/files", function(req, res){
+app.get("/filess", function(req, res){
         
     const collection = req.app.locals.collection;
-    collection.find({}).toArray(function(err, users){
+    collection.find({}).toArray(function(err, filesbd){
          
         if(err) return console.log(err);
-        res.send(users)
+        res.send(filesbd)
     });  
 });
 let dbClient;
 app.get("/files/:id", function(req, res){
         
-    const id = new objectId(req.params.id);
-    const collection = req.app.locals.collection;
-    collection.findOne({_id: id}, function(err, user){
+    const id = new objectId(req.params.id)
+    const collection = req.app.locals.collection
+    collection.findOne({_id: id}, function(err, filesbd){
                
         if(err) return console.log(err);
-        res.send(user);
+        res.send(filesbd);
     });
 });
 
@@ -72,18 +72,18 @@ app.post("/files", jsonParser, function (req, res) {
      
     collection.insertMany(usersMapped, function(err, result){
                
-        if(err) return console.log(err);
+        if(err) return console.log(err)
         if(!usersMapped){
-        res.send("Ошибка при загрузке файла");
+        res.send("Ошибка при загрузке файла")
         }
         else
-        res.send(usersMapped);     
+        res.send(usersMapped)     
     })
 });
    
 process.on("SIGINT", () => {
-    dbClient.close();
-    process.exit();
+    dbClient.close()
+    process.exit()
 });
 
  
