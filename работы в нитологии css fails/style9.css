@@ -1,0 +1,13 @@
+.services {
+    width: 1260px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+    display: flex;
+  }
+  
+.card {
+    width: 420px;
+    padding: 160px 30px 30px 30px;
+    text-align: center;
+  }
+  

@@ -1,0 +1,17 @@
+.card {
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+  padding: 50px 40px 50px 40px;
+  width: 320px;
+}
+
+.news {
+  width: 960px;  
+  flex-wrap: nowrap; 
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.card-date-block {
+  margin-bottom: 20px; 
+}
