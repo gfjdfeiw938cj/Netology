@@ -7,6 +7,7 @@ body {
   font-style: normal;
   font-size: 15px;
   line-height: 1.46;
+  overflow-x: hidden
 }
 
 .visually-hidden {
@@ -32,18 +33,18 @@ body {
 
 @font-face {
   font-family: "Open Sans";
-  src: url("./fonts/OpenSans-Regular.woff2"),
-    url("./fonts/OpenSans-Regular.woff"),
-    url("./fonts/OpenSans-Regular.ttf");
+  src: url("../fonts/OpenSans-Regular.woff2"),
+    url("../fonts/OpenSans-Regular.woff"),
+    url("../fonts/OpenSans-Regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Open Sans";
-  src: url("./fonts/OpenSans-Bold.woff2"),
-    url("./fonts/OpenSans-Bold.woff"),
-    url("./fonts/OpenSans-Bold.ttf");
+  src: url("../fonts/OpenSans-Bold.woff2"), 
+    url("../fonts/OpenSans-Bold.woff"),
+    url("../fonts/OpenSans-Bold.ttf");
   font-weight: 700;
   font-style: normal;
 }
@@ -79,23 +80,23 @@ body {
   }
 
   .footer-twitter {
-    background-image: url("./svg/004-twitter.svg");
+    background-image: url("../svg/004-twitter.svg");
   }
 
   .footer-pinterest {
-    background-image: url("./svg/001-pinterest.svg");
+    background-image: url("../svg/001-pinterest.svg");
   }
 
   .footer-facebook {
-    background-image: url("./svg/002-facebook-logo.svg");
+    background-image: url("../svg/002-facebook-logo.svg");
   }
 
   .footer-instagram {
-    background-image: url("./svg/005-instagram.svg");
+    background-image: url("../svg/005-instagram.svg");
   }
 
   .footer-tumblr {
-    background-image: url("./svg/003-tumblr.svg");
+    background-image: url("../svg/003-tumblr.svg");
   }
 
   .footer-copyright {
@@ -1134,6 +1135,7 @@ body {
     -moz-appearance: none;
     border: none;
     background-color: #f4f7f6;
+    box-sizing: border-box;
   }
 
   .sidebar-input-field:focus {
@@ -1278,9 +1280,13 @@ body {
   .footer {
     display: flex;
     flex-direction: column;
-    max-width: 1170px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 65px 0 40px 0;
+    padding: 65px 15px 40px 15px;
+  }
+
+  .footer-copyright {
+    padding: 0 0 45px 0;
   }
   
   .social-network_list {
