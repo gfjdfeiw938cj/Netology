@@ -1312,27 +1312,27 @@ body {
   }
   
   .social-network_pinterest {
-    background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/001-pinterest.svg);
+    background-image: url("../svg/001-pinterest.svg");
   }
-  
+  /* https://netology-code.github.io/html-2-diploma/sources/images/social/001-pinterest.svg */
   .social-network_facebook {
     background-size: 25px auto;
     background-repeat: no-repeat;
-    background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/002-facebook-logo.svg);
+    background-image: url("../svg/002-facebook-logo.svg");
   }
-  
+  /* https://netology-code.github.io/html-2-diploma/sources/images/social/002-facebook-logo.svg */
   .social-network_tumblr {
-    background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/003-tumblr.svg);
+    background-image: url("../svg/003-tumblr.svg");
   }
-  
+  /* https://netology-code.github.io/html-2-diploma/sources/images/social/003-tumblr.svg */
   .social-network_twitter {
-    background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/004-twitter.svg);
+    background-image: url("../svg/004-twitter.svg");
   }
-  
+  /* https://netology-code.github.io/html-2-diploma/sources/images/social/004-twitter.svg */
   .social-network_instagram {
-    background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/005-instagram.svg);
+    background-image: url("../svg/005-instagram.svg");
   }
-  
+  /* https://netology-code.github.io/html-2-diploma/sources/images/social/005-instagram.svg */
   .copy_right {
     text-decoration: none;
     margin: 75px auto 0;
@@ -1345,14 +1345,14 @@ body {
   
   @font-face {
       font-family: "OpenSans-Regular";
-      src: url(https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Regular.woff);
+      src: url("../fonts/OpenSans-Regular.woff");
   }
-  
+  /* https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Regular.woff */
   @font-face {
       font-family: "OpenSans-Bold";
-      src: url(https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Bold.woff);
+      src: url("../fonts/OpenSans-Bold.woff");
   }
-  
+  /* https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Bold.woff */
   @media screen and (max-width: 1280px) {
       .header_nav {
       margin: 0 calc((100% - 1000px)/2);
